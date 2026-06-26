@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ShopExplorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Shop<span>Explorer</span></div>
+        <div class="search-wrapper">
+
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar productos..."
+            autocomplete="off"
+        />
+        </div>
+
+        <button id="savedBtn">
+        <span>Guardados</span>
+        <span id="savedCount">0</span>
+        </button>
+    </header>
+
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Explora el <em>catálogo</em><br>completo.</h1>
+                <p>Selecciona cualquier producto y guárdalo en tu servidor local.</p>
+            </div>
+            
+            <div class="filters" id="categoryFilters">
+                <span class="filter-label">Categoría:</span>
+                <button class="cat-btn active" data-cat="all">All</button>
+            </div>
+        </section>
+    
+        <div id="statusBar">
+            <div class="spinner" id="spinner"></div>
+            <span id="statusText">Cargando productos...</span>
+        </div>
+
+    
+        <div id="productsGrid"></div>
+
+        <div id="emptyState">
+            <p>🔍</p>
+            <p>Ningún producto coincide con <strong id="emptyTerm"></strong></p>
+        </div>
+
+    </main>
+
+    <div id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div id="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">—</h2>
+                <button id="closeModal" aria-label="Cerrar">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-img-wrap">
+                    <img id="modalImg" src="" alt="" />
+                </div>
+                <div class="modal-info">
+                    <p class="modal-category" id="modalCategory">—</p>
+                    <p class="modal-price" id="modalPrice">—</p>
+                    <p class="modal-rating" id="modalRating">—</p>
+                    <p class="modal-description" id="modalDescription">—</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="save-modal-btn" id="saveModalBtn">⭐ Guardar producto</button>
+            </div>
+        </div>
+    </div>
+
+    <aside id="savedPanel" aria-label="Productos guardados">
+        <div class="panel-header">
+            <h3>Productos guardados</h3>
+            <button id="closePanel" aria-label="Cerrar panel">×</button>
+        </div>
+        <div id="savedList">
+            <div class="saved-empty">
+                <p>📦</p>
+                <p>Aún no guardaste ningún producto.</p>
+            </div>
+        </div>
+    </aside>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
